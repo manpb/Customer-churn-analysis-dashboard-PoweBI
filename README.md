@@ -1,250 +1,70 @@
 📊 Customer Churn Analysis Dashboard (Power BI)
 
-This Power BI project analyses customer churn patterns using over 10,000 records from a European banking dataset. The dashboard uncovers churn drivers, demographic trends, credit score behaviour, and simulates potential retention improvements using What-If analysis.
+This project analyses customer churn using over 10,000 records from a banking dataset. It includes data cleaning, modelling, DAX-driven insights, and interactive Power BI features such as drill-through, bookmarks, and what-if analysis.
 
-The solution demonstrates key Power BI capabilities, including data modelling, DAX calculations, interactive visuals, drill-through navigation, bookmarks, and dynamic parameter-driven simulations.
+✅ Key Features
 
-📂 Dataset
+Multi-page Power BI dashboard
 
-Raw data files sourced from:
-🔗 GitHub Repository (External) – [(https://github.com/ksrdatavizon7/Data-Analytcis-Power-BI/tree/main/Banking%20Project/Datasets)]
+DAX measures for KPIs (Churn Rate, Exit/Retained Customers, Avg Age/Salary/Credit Score)
 
-Data includes multiple files:
+Custom calculated columns (Credit Category, Salary Band, Age Group)
 
-Bank_Churn – Fact table containing age, tenure, balance, credit score, salary, and churn status
+Star-schema data model with dimension tables
 
-CustomerInfo – Customer surnames
+Drill-through customer detail page
 
-Gender – Gender categories
+Bookmark toggle buttons for switching between views
 
-Geography – Country mapping
+What-If parameters for churn simulation
 
-Credit Card – Credit card holder status
+✅ Data Processing
 
-Active Customers – Active/inactive member status
+Cleaned and transformed data in Power Query
 
-Exit Customer – Exit vs retained status
+Created a DateMaster table using DAX
 
-🧹 Data Preparation
+Built relationships and hierarchies
 
-Cleaning and transformation performed in Power Query Editor, including:
+Ensured consistent data types and category sorting
 
-Promoting headers
+✅ Dashboard Pages
 
-Changing data types
+Overview – KPIs, demographics, time-series analysis
 
-Removing unnecessary columns (e.g., RowNumber)
+Customer Demographics – Age, salary, credit score, gender, geography
 
-Ensuring CustomerId uniqueness
+Churn Analysis – Exit metrics and churn rate toggle
 
-Checking for null or inconsistent values
+Drill-Through Details – Row-level customer exploration
 
-Merging and modelling dimension tables
+What-If Analysis – Simulated churn reduction using parameter sliders
 
-Creating a calculated DateMaster table using:
+✅ Insights
 
-DateMaster = CALENDAR(FIRSTDATE(Bank_Churn[Bank DOJ]), LASTDATE(Bank_Churn[Bank DOJ]))
+Low credit score customers churn the most
 
+Age group 46–60 shows highest exit rate
 
-Added:
+Single-product customers have the highest churn
 
-Year
+Simulated improvements reduce churn effectively
 
-Month
+✅ Skills Demonstrated
 
-Month Name
+Power BI
 
-Custom date hierarchy
+DAX
 
-🧩 Data Model
+Power Query
 
-This project uses a star schema design, with:
+Data Modelling
 
-Bank_Churn as the central fact table
+Interactive analytics
 
-Linked dimension tables:
+Scenario-based forecasting
 
-Gender
+🔗 Project Links
 
-Geography
-
-CustomerInfo
-
-Credit Card
-
-Exit Customer
-
-Active Customers
-
-DateMaster
-
-✅ One-to-many relationships
-✅ Single directional filtering
-✅ Dimension-driven slicing
-✅ Sorting columns for consistency
-
-🧠 DAX Measures
-
-Key KPIs created:
-
-Total Customers = DISTINCTCOUNT(Bank_Churn[CustomerId])
-Exit Customers = CALCULATE(COUNT(Bank_Churn[CustomerId]), 'Exit Customer'[ExitCategory] = "Exit")
-Retain Customers = CALCULATE(COUNT(Bank_Churn[CustomerId]), 'Exit Customer'[ExitCategory] = "Retain")
-Churn Rate = DIVIDE([Exit Customers], [Total Customers], 0)
-Average Age = AVERAGE(Bank_Churn[Age])
-Average Balance = AVERAGE(Bank_Churn[Balance])
-Average Credit Score = AVERAGE(Bank_Churn[CreditScore])
-Average Salary = AVERAGE(Bank_Churn[EstimatedSalary])
-
-
-Calculated columns include:
-
-Credit score category (Excellent → Poor)
-
-Salary band + sort column
-
-Age group + sort column
-
-⚙️ What-If Parameters
-
-Created using GENERATESERIES():
-
-Tenure Increase
-
-Salary Increase
-
-Credit Score Improvement
-
-These drive simulated metrics:
-
-Simulated Churn Rate
-
-Churn Reduction %
-
-Retention Improvement (%)
-
-Simulated Average Salary / Tenure / Credit Score
-
-Example:
-
-Simulated Churn Rate =
-VAR tenureEffect = (1 - ('Tenure Increase'[Tenure Increase Value] * 0.03))
-VAR salaryEffect = (1 - ('Salary Increase'[Salary Increase Value] * 0.01))
-VAR creditEffect = (1 - ('Credit Score Improvement'[Credit Score Improvement Value] * 0.015))
-VAR adjusted = [Churn Rate] * tenureEffect * salaryEffect * creditEffect
-RETURN IF(adjusted < 0, 0, adjusted)
-
-📄 Dashboard Pages
-✅ Overview Page
-
-KPIs: Churn rate, active/inactive, exits, credit card holders
-
-Customer distribution charts
-
-Time-series line chart with drill down
-
-Slicers for segmentation
-
-✅ Customer Demographics
-
-Age, salary, credit score averages
-
-Gender breakdown
-
-Geography distribution
-
-Salary band and age group insights
-
-✅ Churn Analysis (Bookmarks)
-
-Toggle buttons for: Exit Metrics ↔ Churn Rate
-
-Churn analysis across key segments
-
-✅ Drill-Through Details
-
-Row-level data view
-
-Customer-level attributes
-
-Activated from any segment
-
-✅ What-If Analysis
-
-Parameter slicers
-
-Simulated KPIs
-
-Side-by-side actual vs simulated charts
-
-Interactive scenario modelling
-
-📊 Insights
-
-Key findings include:
-
-Low credit score customers show highest churn
-
-Customers aged 46–60 have largest exit rate
-
-Customers with only 1 product churn the most
-
-Salary impacts churn slightly; credit score and tenure influence it more strongly
-
-Simulated improvements show potential to reduce churn significantly
-
-🚀 Skills Demonstrated
-
-Power BI Dashboard Design
-
-Power Query Data Cleaning
-
-Data Modelling (Star Schema)
-
-DAX Measures and Calculated Columns
-
-What-If Analysis and Forecasting
-
-Drill-Through Pages
-
-Bookmarks and Interactive Buttons
-
-Time Intelligence
-
-Business Insight Communication
-
-📁 Repository Structure
-/Dataset
-    Bank_Churn.csv
-    Geography.csv
-    Gender.csv
-    CustomerInfo.csv
-    ActiveCustomers.csv
-    ExitCustomer.csv
-    CreditCard.csv
-
-/PowerBI
-    Customer_Churn_Dashboard.pbix
-
-README.md
-
-🔗 Project Page
-
-See full project explanation and dashboard screenshots here:
-👉 add your website link
-
-✅ How to Use
-
-Download the .pbix file.
-
-Open in Power BI Desktop.
-
-Use slicers and bookmarks to explore insights.
-
-Adjust What-If parameters to simulate retention strategies.
-
-📬 Contact
-
-If you’d like to collaborate or discuss BI/Analytics opportunities:
-📧 Email: (your email)
-🌐 Portfolio: https://www.manujasprojects.co.uk
+Website: (https://www.manujasprojects.co.uk/bank-customer-churn-analysis)
+PBIX File: (https://1drv.ms/f/c/ede05ee8b19c3fa2/EvuPwlAMKv5Pu-uJ4pL9tjYB1KNJZ8sy7ArblNqHzCx3Qw?e=PDxky8)
