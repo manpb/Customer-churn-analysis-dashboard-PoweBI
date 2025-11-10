@@ -7,7 +7,7 @@ The solution demonstrates key Power BI capabilities, including data modelling, D
 📂 Dataset
 
 Raw data files sourced from:
-🔗 GitHub Repository (External) – [(add original dataset link)](https://github.com/ksrdatavizon7/Data-Analytcis-Power-BI/tree/main/Banking%20Project/Datasets)
+🔗 GitHub Repository (External) – [(https://github.com/ksrdatavizon7/Data-Analytcis-Power-BI/tree/main/Banking%20Project/Datasets)]
 
 Data includes multiple files:
 
